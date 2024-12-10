@@ -1,10 +1,9 @@
-import Image from "next/image";
-import Login from "./components/general/login/Login"
-
+// src/app/page.tsx
 export default function Home() {
-  return (
-    <>
-      <Login></Login>
-    </>
-  );
-}
+    return (
+      <div>
+        <h1>Welcome to the Home Page!</h1>
+      </div>
+    );
+  }
+  

@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { Facebook, Twitter } from 'lucide-react'
+import Link from "next/link";
+import { Facebook, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -9,28 +9,52 @@ export default function Footer() {
           <div>
             <h3 className="font-bold mb-4">Asistencia</h3>
             <ul className="space-y-2">
-              <li><Link href="#">Centro de ayuda</Link></li>
-              <li><Link href="#">SelfPoint</Link></li>
-              <li><Link href="#">Antidiscriminación</Link></li>
-              <li><Link href="#">Opciones de cancelación</Link></li>
+              <li>
+                <Link href="#">Centro de ayuda</Link>
+              </li>
+              <li>
+                <Link href="#">SelfPoint</Link>
+              </li>
+              <li>
+                <Link href="#">Antidiscriminación</Link>
+              </li>
+              <li>
+                <Link href="#">Opciones de cancelación</Link>
+              </li>
             </ul>
           </div>
           <div>
             <h3 className="font-bold mb-4">Modo anfitrión</h3>
             <ul className="space-y-2">
-              <li><Link href="#">Pon tu espacio en Urban Point</Link></li>
-              <li><Link href="#">SelfPoint para arrendadores</Link></li>
-              <li><Link href="#">Recursos para arrendadores</Link></li>
-              <li><Link href="#">Foro comunitario</Link></li>
-              <li><Link href="#">Arrendar con responsabilidad</Link></li>
+              <li>
+                <Link href="#">Pon tu espacio en Urban Point</Link>
+              </li>
+              <li>
+                <Link href="#">SelfPoint para arrendadores</Link>
+              </li>
+              <li>
+                <Link href="#">Recursos para arrendadores</Link>
+              </li>
+              <li>
+                <Link href="#">Foro comunitario</Link>
+              </li>
+              <li>
+                <Link href="#">Arrendar con responsabilidad</Link>
+              </li>
             </ul>
           </div>
           <div>
             <h3 className="font-bold mb-4">Urban Point</h3>
             <ul className="space-y-2">
-              <li><Link href="#">Sala de prensa</Link></li>
-              <li><Link href="#">Funciones nuevas</Link></li>
-              <li><Link href="#">Inversionistas</Link></li>
+              <li>
+                <Link href="#">Sala de prensa</Link>
+              </li>
+              <li>
+                <Link href="#">Funciones nuevas</Link>
+              </li>
+              <li>
+                <Link href="#">Inversionistas</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -38,7 +62,14 @@ export default function Footer() {
       <div className="bg-gray-700 py-4">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm">
           <div className="mb-4 md:mb-0">
-            © 2024 UrbanPoint · <Link href="#" className="hover:underline">Privacidad</Link> · <Link href="#" className="hover:underline">Términos</Link>
+            © 2024 UrbanPoint ·{" "}
+            <Link href="#" className="hover:underline">
+              Privacidad
+            </Link>{" "}
+            ·{" "}
+            <Link href="#" className="hover:underline">
+              Términos
+            </Link>
           </div>
           <div className="flex items-center space-x-4">
             <button className="flex items-center space-x-2">
@@ -57,5 +88,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
