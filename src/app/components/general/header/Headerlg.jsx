@@ -1,7 +1,8 @@
 // src/components/Header.jsx
 import React from 'react';
-import { Outlet , Link } from 'react-router-dom';
-import SearchBar from '../../pages/Barra_busqueda/busqueda';
+import Link from 'next/link';
+
+import SearchBar from '../barSearch/searchBar';
 const Header = () => {
   return (
     <header className="bg-gray-200 justify-between items-center ">
@@ -19,7 +20,6 @@ const Header = () => {
         </div> 
       </div>
       <SearchBar />
-      <Outlet/>
     </header>
   );
 }

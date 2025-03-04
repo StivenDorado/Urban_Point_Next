@@ -28,7 +28,7 @@ export default function Landing() {
 
       <section className="grid grid-cols-4 gap-20 p-24">
         {Array.from({ length: 16 }).map((_, index) => (
-          <Link href="/Appubli" key={index}>
+          <Link href="/reserva" key={index}>
             <div className="flex flex-col items-center justify-center">
               <div className="bg-zinc-700 relative w-60 h-56 rounded-t-lg">
                 <button className="bg-transparent absolute top-1 right-2 rounded-lg px-1 py-1">

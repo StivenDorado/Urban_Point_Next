@@ -1,5 +1,5 @@
 import Footer from "../../components/footer/Footer";
-import { Outlet, Link } from "react-router-dom";
+import Link from "next/link"; // Elimina react-router-dom
 
 export default function Landing() {
   return (
@@ -12,7 +12,7 @@ export default function Landing() {
 
       <section className="grid grid-cols-4 gap-20 p-24">
         {Array.from({ length: 16 }).map((_, index) => (
-          <Link to="/Appubli">
+          <Link to="/reserva">
             <div
               key={index}
               className="flex flex-col items-center justify-center"
