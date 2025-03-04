@@ -5,6 +5,7 @@ import Link from "next/link";
 import Footer from "../components/general/footer/Footer";
 import SearchBar from "../components/general/barSearch/searchBar";
 import FiltersMenu from "../components/general/filters/Menu";
+import Header from "../components/general/header/Headerlg";
 
 export default function Landing() {
   const [isFiltersOpen, setFiltersOpen] = useState(false);
@@ -15,9 +16,11 @@ export default function Landing() {
   return (
     <div className="bg-gray-800 min-h-screen">
       {/* Barra de búsqueda */}
-      <header className="relative bg-white shadow">
+      {/* {<header className="relative bg-white shadow">
         <SearchBar onFiltersClick={toggleFiltersMenu} />
-      </header>
+      </header>} */}
+      <Header />
+      
 
       {/* Sección de resultados */}
       <section className="p-4 grid grid-cols-3 gap-4">
