@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { AuthProvider } from "../app/context/AuthContext";
 import { FavoritesProvider } from "../app/context/FavoritesContext";
 import { ReactNode } from "react";
+import "../../src/globals.css";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +22,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             {/* Contenido principal */}
             <main className="min-h-screen">
               {/* Capa oscura semitransparente */}
-              <div className="fixed inset-0 bg-black/20 custom-backdrop-blur" />
+              <div className="fixed inset-0 bg-black/20" />
               {children}
             </main>
           </FavoritesProvider>

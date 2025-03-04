@@ -75,7 +75,7 @@ export default function Login() {
       if (esPropietario) {
         router.push("/arrendatario");
       } else {
-        router.push("/home");
+        router.push("/landing");
       }
     } catch (error) {
       console.error("Error en la autenticación:", error.message);
@@ -103,7 +103,7 @@ export default function Login() {
       if (esPropietario) {
         router.push("/home2");
       } else {
-        router.push("/home");
+        router.push("/landing");
       }
     } catch (error) {
       console.error("Error al iniciar sesión con Google:", error.message);

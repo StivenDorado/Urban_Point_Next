@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
 
-
-const SearchBar = () => {
+const SearchBar = ({ onFiltersClick }) => {
   return (
     <section className="w-full p-4 flex items-center justify-center">
       <article className="w-full max-w-4xl bg-white rounded-full shadow-md flex items-center p-2 space-x-2">
         {/* Botón "Fecha de Entrada" */}
-        <button variant="outline" className="text-black flex-shrink-0 px-4 py-2 rounded-full border-0 bg-transparent hover:bg-gray-100">
+        <button className="text-black flex-shrink-0 px-4 py-2 rounded-full border-0 bg-transparent hover:bg-gray-100">
           Fecha de Entrada
         </button>
 
@@ -23,12 +22,15 @@ const SearchBar = () => {
         <div className="border-l border-gray-300 h-6 mx-2"></div>
 
         {/* Botón "Filtros" */}
-        <button variant="outline" className="text-black flex-shrink-0 px-4 py-2 rounded-full border-0 bg-transparent hover:bg-gray-100">
+        <button
+          className="text-black flex-shrink-0 px-4 py-2 rounded-full border-0 bg-transparent hover:bg-gray-100"
+          onClick={onFiltersClick}
+        >
           Filtros
         </button>
       </article>
     </section>
   );
-}
+};
 
 export default SearchBar;
