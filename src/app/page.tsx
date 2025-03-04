@@ -1,10 +1,17 @@
-import Image from "next/image";
-import Login from "./components/general/login/Login"
+"use client"; 
+
+import { useAuth } from "../app/context/AuthContext";
+import Login from "../app/login";
 
 export default function Home() {
+  const {user, logOut } = useAuth();
+
+  if (!user) {
+    return <Login/>
+  }
+  
   return (
-    <>
-      <Login></Login>
-    </>
+    <div>
+    </div>
   );
 }
