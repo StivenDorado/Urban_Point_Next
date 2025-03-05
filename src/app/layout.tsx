@@ -1,7 +1,7 @@
 "use client";
 import { Inter } from "next/font/google";
-import { AuthProvider } from "../app/context/AuthContext";
-import { FavoritesProvider } from "../app/context/FavoritesContext";
+import { AuthProvider } from "../context/AuthContext";
+import { FavoritesProvider } from "../context/FavoritesContext";
 import { ReactNode } from "react";
 import "../../src/globals.css";
 
