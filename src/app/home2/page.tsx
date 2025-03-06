@@ -5,7 +5,7 @@ import Link from "next/link";
 import Footer from "../../components/general/footer/Footer";
 import FiltersMenu from "../../components/general/filters/Menu";
 import Header from "../../components/general/header/Headerlg";
-import Header2 from "../../components/header2/header";
+import Header2 from "../../components/header2/header2";
 
 
 export default function Landing() {
