@@ -4,19 +4,27 @@ import { useState } from "react";
 import Link from "next/link";
 import Footer from "../../components/general/footer/Footer";
 import FiltersMenu from "../../components/general/filters/Menu";
-import Header from "../../components/header/header";
+import Header from "../../components/general/header/Headerlg";
+import Header2 from "../../components/header/header";
 
-export default function Landing(): JSX.Element {
-  const [isFiltersOpen, setFiltersOpen] = useState<boolean>(false);
+
+export default function Landing() {
+  const [isFiltersOpen, setFiltersOpen] = useState(false);
 
   // Función para alternar el estado del menú de filtros
-  const toggleFiltersMenu = (): void => setFiltersOpen(!isFiltersOpen);
+  const toggleFiltersMenu = () => setFiltersOpen(!isFiltersOpen);
 
   return (
     <div className="bg-gray-800 min-h-screen">
-      
+      <Header2 />
+
+      {/* Barra de búsqueda */}
+      {/* {<header className="relative bg-white shadow">
+        <SearchBar onFiltersClick={toggleFiltersMenu} />
+      </header>} */}
       <Header />
       
+
       {/* Sección de resultados */}
       <section className="p-4 grid grid-cols-3 gap-4">
         <div className="bg-gray-300 h-24 rounded-md" />
@@ -25,7 +33,7 @@ export default function Landing(): JSX.Element {
       </section>
 
       <section className="grid grid-cols-4 gap-20 p-24">
-        {Array.from({ length: 16 }).map((_, index: number) => (
+        {Array.from({ length: 16 }).map((_, index) => (
           <Link href="/reserva" key={index}>
             <div className="flex flex-col items-center justify-center">
               <div className="bg-zinc-700 relative w-60 h-56 rounded-t-lg">

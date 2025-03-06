@@ -135,7 +135,7 @@ export default function MisPublicaciones() {
                   </div>
                   <div className="flex items-center gap-4 text-gray-300 mt-2">
                     <DollarSign className="w-5 h-5" />
-                    <p>${publicacion.precio} por noche</p>
+                    <p>${publicacion.precio} por mes</p>
                   </div>
                 </div>
                 <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 items-center justify-center">

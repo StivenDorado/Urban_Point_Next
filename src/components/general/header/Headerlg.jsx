@@ -1,27 +1,50 @@
 // src/components/Header.jsx
-import React from 'react';
-import { Outlet , Link } from 'react-router-dom';
-import SearchBar from '../../pages/Barra_busqueda/busqueda';
+"use client"; // Asegúrate de que este archivo sea un Client Component
+
+import React, { useState } from "react";
+import Link from "next/link";
+import SearchBar from "../barSearch/searchBar";
+import FiltersMenu from "../filters/Menu";
+
 const Header = () => {
+  const [isFiltersMenuOpen, setIsFiltersMenuOpen] = useState(false);
+
+  const handleFiltersClick = () => {
+    setIsFiltersMenuOpen(true);
+  };
+
+  const handleCloseFiltersMenu = () => {
+    setIsFiltersMenuOpen(false);
+  };
+
   return (
-    <header className="bg-gray-200 justify-between items-center ">
-      <div className="w-full  mx-auto px-4 sm:px-6 lg:px-8"> {/* Ajuste para centrar y limitar el ancho */}
+    <header className="bg-gray-200">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-gray-800 font-bold text-xl">Logo UrbanPoint</Link>
-          <div className="flex space-x-4 ">
-            <Link to="/iniciosesion">
-              <button className='text-white' variant="outline">Inicia sesión</button>
+          {/* Logo */}
+          <Link href="/" className="text-gray-800 font-bold text-xl">
+            Logo UrbanPoint
+          </Link>
+
+          {/* Botones de inicio de sesión y registro */}
+          <div className="flex space-x-4">
+            <Link href="/iniciosesion">
+              <button className="text-gray-800 hover:text-gray-600">Inicia sesión</button>
             </Link>
-            <Link to="/registrarse">
-              <button className='text-white' variant="outline">Regístrate</button>
+            <Link href="/registrarse">
+              <button className="text-gray-800 hover:text-gray-600">Regístrate</button>
             </Link>
           </div>
-        </div> 
+        </div>
+
+        {/* Barra de búsqueda */}
+        <SearchBar onFiltersClick={handleFiltersClick} />
       </div>
-      <SearchBar />
-      <Outlet/>
+
+      {/* Menú de filtros */}
+      <FiltersMenu isOpen={isFiltersMenuOpen} onClose={handleCloseFiltersMenu} />
     </header>
   );
-}
+};
 
 export default Header;
