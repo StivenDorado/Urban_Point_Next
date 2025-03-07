@@ -1,4 +1,18 @@
 import React from "react";
+import {
+  Home, // Icono para tipo de vivienda
+  Wifi, // Icono para Wifi
+  Zap, // Icono para Energía
+  Tv, // Icono para TV
+  Utensils, // Icono para Cocina
+  Droplet, // Icono para Agua
+  Car, // Icono para Garaje
+  Settings, // Icono alternativo para Lavadora (Washer no existe)
+  Snowflake, // Icono alternativo para Nevera (Refrigerator no existe)
+  Flame, // Icono para Gas
+  Sofa, // Icono para Amoblado
+  PawPrint, // Icono para Acepta mascotas
+} from "lucide-react";
 
 const FiltersMenu = ({ isOpen, onClose }) => {
   if (!isOpen) return null; // Ocultar si el menú no está abierto
@@ -22,18 +36,18 @@ const FiltersMenu = ({ isOpen, onClose }) => {
             <h3 className="text-lg font-semibold mb-4">Tipo de vivienda</h3>
             <div className="flex justify-center space-x-6">
               {[
-                "Apartamento",
-                "Casa",
-                "Casa de Familia",
-                "Estudio",
-                "Habitación",
+                { label: "Apartamento", icon: <Home className="w-6 h-6" /> },
+                { label: "Casa", icon: <Home className="w-6 h-6" /> },
+                { label: "Casa de Familia", icon: <Home className="w-6 h-6" /> },
+                { label: "Estudio", icon: <Home className="w-6 h-6" /> },
+                { label: "Habitación", icon: <Home className="w-6 h-6" /> },
               ].map((tipo) => (
                 <button
-                  key={tipo}
+                  key={tipo.label}
                   className="flex flex-col items-center text-sm border-2 border-gray-300 rounded-lg p-4 hover:border-gray-500"
                 >
-                  <div className="w-12 h-12 bg-gray-200 rounded-full mb-2"></div>
-                  {tipo}
+                  {tipo.icon}
+                  {tipo.label}
                 </button>
               ))}
             </div>
@@ -44,22 +58,22 @@ const FiltersMenu = ({ isOpen, onClose }) => {
             <h3 className="text-lg font-semibold mb-4">Servicios</h3>
             <div className="grid grid-cols-3 gap-4">
               {[
-                "Wifi",
-                "Energía",
-                "TV",
-                "Cocina",
-                "Agua",
-                "Garaje",
-                "Lavadora",
-                "Nevera",
-                "Gas",
+                { label: "Wifi", icon: <Wifi className="w-6 h-6" /> },
+                { label: "Energía", icon: <Zap className="w-6 h-6" /> },
+                { label: "TV", icon: <Tv className="w-6 h-6" /> },
+                { label: "Cocina", icon: <Utensils className="w-6 h-6" /> },
+                { label: "Agua", icon: <Droplet className="w-6 h-6" /> },
+                { label: "Garaje", icon: <Car className="w-6 h-6" /> },
+                { label: "Lavadora", icon: <Settings className="w-6 h-6" /> }, // Icono alternativo
+                { label: "Nevera", icon: <Snowflake className="w-6 h-6" /> }, // Icono alternativo
+                { label: "Gas", icon: <Flame className="w-6 h-6" /> },
               ].map((servicio) => (
                 <button
-                  key={servicio}
+                  key={servicio.label}
                   className="flex flex-col items-center text-sm border-2 border-gray-300 rounded-lg p-4 hover:border-gray-500"
                 >
-                  <div className="w-12 h-12 bg-gray-200 rounded-full mb-2"></div>
-                  {servicio}
+                  {servicio.icon}
+                  {servicio.label}
                 </button>
               ))}
             </div>
@@ -70,17 +84,40 @@ const FiltersMenu = ({ isOpen, onClose }) => {
             <h3 className="text-lg font-semibold mb-4">Otros filtros</h3>
             <div className="grid grid-cols-2 gap-4">
               {[
-                "Amoblado",
-                "Sin Amoblar",
-                "Acepta mascotas",
-                "No acepta mascotas",
+                { label: "Amoblado", icon: <Sofa className="w-6 h-6" /> },
+                {
+                  label: "Sin Amoblar",
+                  icon: (
+                    <div className="relative">
+                      <Sofa className="w-6 h-6" />
+                      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                        <div className="w-6 h-0.5 bg-red-500 transform rotate-45"></div>
+                      </div>
+                    </div>
+                  ),
+                },
+                {
+                  label: "Acepta mascotas",
+                  icon: <PawPrint className="w-6 h-6" />,
+                },
+                {
+                  label: "No acepta mascotas",
+                  icon: (
+                    <div className="relative">
+                      <PawPrint className="w-6 h-6" />
+                      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                        <div className="w-6 h-0.5 bg-red-500 transform rotate-45"></div>
+                      </div>
+                    </div>
+                  ),
+                },
               ].map((filtro) => (
                 <button
-                  key={filtro}
+                  key={filtro.label}
                   className="flex flex-col items-center text-sm border-2 border-gray-300 rounded-lg p-4 hover:border-gray-500"
                 >
-                  <div className="w-12 h-12 bg-gray-200 rounded-full mb-2"></div>
-                  {filtro}
+                  {filtro.icon}
+                  {filtro.label}
                 </button>
               ))}
             </div>

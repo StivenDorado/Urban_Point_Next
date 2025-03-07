@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import SearchBar from "../barSearch/searchBar";
 import FiltersMenu from "../filters/Menu";
+import DropdownModal from "../dropmodal/perfil"; // Asegúrate de que la ruta sea correcta
 
 const Header = () => {
   const [isFiltersMenuOpen, setIsFiltersMenuOpen] = useState(false);
@@ -26,15 +27,8 @@ const Header = () => {
             Logo UrbanPoint
           </Link>
 
-          {/* Botones de inicio de sesión y registro */}
-          <div className="flex space-x-4">
-            <Link href="/iniciosesion">
-              <button className="text-gray-800 hover:text-gray-600">Inicia sesión</button>
-            </Link>
-            <Link href="/registrarse">
-              <button className="text-gray-800 hover:text-gray-600">Regístrate</button>
-            </Link>
-          </div>
+          {/* DropdownModal para el menú de usuario */}
+          <DropdownModal isLoggedIn={false} /> {/* Cambia isLoggedIn según el estado de autenticación */}
         </div>
 
         {/* Barra de búsqueda */}

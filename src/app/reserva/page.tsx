@@ -11,7 +11,7 @@ export default function PaginaPropiedad() {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <Encabezado />
+      {/* <Encabezado /> */}
 
       <main className="flex-1 container mx-auto p-4">
         <div className="my-4">
