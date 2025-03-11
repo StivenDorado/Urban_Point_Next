@@ -1,3 +1,3 @@
 module.exports = {
-  reactStrictMode: true, // Recomendado para desarrollo
+  reactStrictMode: false, // Recomendado para desarrollo
 };

@@ -3,6 +3,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Bell, LogOut, Heart, Home, MessageSquare, HelpCircle, User, Menu } from "lucide-react";
+import Link from "next/link";
 
 interface ModalProps {
   isLoggedIn?: boolean;
@@ -57,7 +58,11 @@ function GuestView() {
       <button className="px-4 py-3 text-left font-medium hover:bg-gray-100 transition-colors">Inicia sesión</button>
       <button className="px-4 py-3 text-left hover:bg-gray-100 transition-colors">Regístrate</button>
       <div className="h-px bg-gray-200 my-1"></div>
-      <button className="px-4 py-3 text-left hover:bg-gray-100 transition-colors">Pon tu espacio en Airbnb</button>
+      <Link href="/alojamiento">
+        <button className="px-4 py-3 text-left hover:bg-gray-100 transition-colors w-full">
+          Publicar Alojamiento
+        </button>
+      </Link>
       <button className="px-4 py-3 text-left hover:bg-gray-100 transition-colors">Organiza una experiencia</button>
       <button className="px-4 py-3 text-left hover:bg-gray-100 transition-colors">Centro de ayuda</button>
     </div>

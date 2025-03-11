@@ -3,21 +3,18 @@ import Link from "next/link"; // Elimina react-router-dom
 
 export default function Landing() {
   return (
-    <div className=" bg-gray-800">
+    <div className="bg-white"> {/* Fondo blanco para toda la página */}
       <section className="p-4 grid grid-cols-3 gap-4">
         <div className="bg-gray-300 h-24 rounded-md" />
         <div className="bg-gray-300 h-24 rounded-md" />
         <div className="bg-gray-300 h-24 rounded-md" />
       </section>
 
-      <section className="grid grid-cols-4 gap-20 p-24">
+      <section className="grid grid-cols-4 gap-20 p-24 bg-white"> {/* Cambiado a bg-white */}
         {Array.from({ length: 16 }).map((_, index) => (
-          <Link to="/reserva">
-            <div
-              key={index}
-              className="flex flex-col items-center justify-center"
-            >
-              <div className="bg-zinc-700  relative w-60 h-56 rounded-t-lg">
+          <Link href="/reserva" key={index}> {/* Corregido `to` por `href` */}
+            <div className="flex flex-col items-center justify-center">
+              <div className="bg-white relative w-60 h-56 rounded-t-lg">
                 <button className="bg-transparent absolute top-1 right-2 rounded-lg px-1 py-1">
                   <svg
                     className="h-5 w-5"
