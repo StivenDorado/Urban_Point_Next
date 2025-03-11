@@ -4,7 +4,7 @@ import Servicios from "../components/Apprentice/landing-publi/Servicios";
 import Resenas from "../components/Apprentice/landing-publi/Resenas";
 import InformacionArrendador from "../components/Apprentice/landing-publi/InformacionArrendador";
 import PrecioReserva from "../components/Apprentice/landing-publi/PrecioReserva";
-import PiePagina from "../components/Apprentice/landing-publi/PiePagina";
+import Footer from "../components/general/footer/Footer";
 import Header from "../components/general/header/Headerlg";
 
 export default function PaginaPropiedad() {
@@ -32,8 +32,7 @@ export default function PaginaPropiedad() {
           </div>
         </div>
       </main>
-
-      <PiePagina />
+      <Footer />
     </div>
   );
 }
