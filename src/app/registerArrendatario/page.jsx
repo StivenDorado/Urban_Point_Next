@@ -8,7 +8,7 @@ export default function RegistroArrendatario() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [propietario, setPropietario] = useState(null);
+  const [arrendador, setArrendador] = useState(null);
 
   const handleContinuar = async () => {
     setLoading(true);
@@ -24,9 +24,9 @@ export default function RegistroArrendatario() {
     try {
       // Obtener el token del usuario autenticado
       const token = await auth.currentUser.getIdToken();
-      
-      // Realizar la petición para registrar al propietario
-      const res = await fetch("http://localhost:4004/api/propietario", {
+
+      // Realizar la petición para registrar al arrendador
+      const res = await fetch("http://localhost:4004/api/arrendador", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,16 +36,15 @@ export default function RegistroArrendatario() {
 
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Error al registrar propietario");
+        setError(data.error || "Error al registrar arrendador");
       } else {
-        // Registro exitoso, guarda el id en localStorage y actualiza el estado
-        localStorage.setItem("propietarioId", data.propietario.uid);
-        // Agregamos un console.log para confirmar que se guardó la id:
-        console.log("PropietarioId guardado:", localStorage.getItem("propietarioId"));
-        
-        setPropietario(data.propietario);
-        // Puedes redirigir o simplemente mostrar el id:
-         router.push("/arrendatario");
+        // Registro exitoso, guarda el uid en localStorage y actualiza el estado
+        localStorage.setItem("arrendadorId", data.arrendador.uid);
+        console.log("arrendadorId guardado:", localStorage.getItem("arrendadorId"));
+
+        setArrendador(data.arrendador);
+        // Redirige a la ruta deseada
+        router.push("/arrendatario");
       }
     } catch (err) {
       setError(err.message || "Error en la petición");
@@ -81,9 +80,9 @@ export default function RegistroArrendatario() {
           Volver
         </button>
         {error && <p className="mt-4 text-red-500">{error}</p>}
-        {propietario && (
+        {arrendador && (
           <div className="mt-4 text-green-500">
-            Registrado como propietario. ID: {propietario.id}
+            Registrado como arrendador. UID: {arrendador.uid}
           </div>
         )}
       </div>

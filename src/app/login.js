@@ -17,7 +17,7 @@ export default function Login() {
   // Función para verificar si el usuario está registrado como propietario
   const verificarPropietario = async (token, userUid) => {
     try {
-      const res = await fetch("http://localhost:4004/api/propietario", {
+      const res = await fetch("http://localhost:4004/api/arrendador", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
