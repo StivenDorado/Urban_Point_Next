@@ -35,9 +35,9 @@ export default function PublicarPropiedad() {
     setError(null);
 
     // Verifica que se tenga el id del propietario desde localStorage y lo limpia
-    const propietarioId = localStorage.getItem("propietarioId")?.trim();
-    console.log("PropietarioId obtenido desde localStorage:", propietarioId);
-    if (!propietarioId) {
+    const arrendadorId = localStorage.getItem("arrendadorId")?.trim();
+    console.log("PropietarioId obtenido desde localStorage:", arrendadorId);
+    if (!arrendadorId) {
       setError("No se encontró el id del propietario. Asegúrate de estar registrado.");
       return;
     }
@@ -58,7 +58,8 @@ export default function PublicarPropiedad() {
       data.append("direccion", formData.direccion);
       data.append("precio", formData.precio);
       data.append("imagen", formData.imagen); // Asegúrate de que el campo se llame "imagen"
-      data.append("propietario_id", propietarioId);
+      data.append("arrendador_uid", arrendadorId);
+
 
       // Muestra los datos del FormData para depuración
       for (let pair of data.entries()) {
@@ -66,7 +67,7 @@ export default function PublicarPropiedad() {
       }
 
       // Realiza la petición al endpoint de creación de propiedad
-      const res = await fetch("http://localhost:4004/api/publicacion", {
+      const res = await fetch("http://localhost:4000/api/publicacion", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

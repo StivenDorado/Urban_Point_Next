@@ -30,15 +30,16 @@ export default function MisPublicaciones() {
     return () => unsubscribe(); // Limpia el listener al desmontar
   }, []);
 
-  // Función para obtener las publicaciones del propietario
+  // Función para obtener las publicaciones del arrendador
   const fetchPublicaciones = async (currentUser) => {
     setLoading(true);
     setError(null);
 
-    const propietarioId = localStorage.getItem("propietarioId")?.trim();
-    console.log("PropietarioId obtenido desde localStorage:", propietarioId);
-    if (!propietarioId) {
-      setError("No se encontró el ID del propietario en localStorage.");
+    // Se obtiene el ID del arrendador desde localStorage (clave "arrendadorId")
+    const arrendadorId = localStorage.getItem("arrendadorId")?.trim();
+    console.log("arrendadorId obtenido desde localStorage:", arrendadorId);
+    if (!arrendadorId) {
+      setError("No se encontró el ID del arrendador en localStorage.");
       setLoading(false);
       return;
     }
@@ -47,7 +48,8 @@ export default function MisPublicaciones() {
       const token = await currentUser.getIdToken();
       console.log("Token obtenido:", token);
 
-      const res = await fetch(`http://localhost:4004/api/publicacion?propietario_id=${propietarioId}`, {
+      // Se utiliza el query parameter "arrendador_uid" para que coincida con lo que espera el backend
+      const res = await fetch(`http://localhost:4000/api/publicacion?arrendador_uid=${arrendadorId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -73,7 +75,7 @@ export default function MisPublicaciones() {
       // Obtenemos el token del usuario autenticado
       const token = await auth.currentUser.getIdToken();
       // Realizamos la petición DELETE al endpoint
-      const res = await fetch(`http://localhost:4004/api/publicacion/${id}`, {
+      const res = await fetch(`http://localhost:4000/api/publicacion/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -94,6 +96,7 @@ export default function MisPublicaciones() {
     }
   };
 
+  // Función para editar una publicación
   const handleEditarPublicacion = (id) => {
     router.push(`/editar-publicacion/${id}`);
   };
@@ -119,7 +122,7 @@ export default function MisPublicaciones() {
               >
                 <div className="w-full lg:w-1/3 h-48 lg:h-40 rounded-lg overflow-hidden">
                   <img
-                    src={`http://localhost:4004/uploads/${publicacion.imagen}`}
+                    src={`http://localhost:4000/uploads/${publicacion.imagen}`}
                     alt={publicacion.titulo}
                     className="w-full h-full object-cover rounded-lg"
                   />

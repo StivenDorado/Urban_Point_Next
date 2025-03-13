@@ -73,7 +73,7 @@ export default function Login() {
       console.log("¿Es arrendador?", esarrendador);
   
       if (esarrendador) {
-        router.push("/arrendatario");
+        router.push("/home2");
       } else {
         router.push("/home");
       }
@@ -117,7 +117,7 @@ export default function Login() {
         <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-white via-gray-200 to-white opacity-20 blur-sm"></div>
         {/* Contenedor del logo */}
         <div className="relative bg-white bg-opacity-5 rounded-full p-1 backdrop-blur-sm shadow-md">
-          <img src="/logoUP.png" alt="Logo" className="w-40 h-40 object-contain" />
+          <img src="/logo.png" alt="Logo" className="w-40 h-40 object-contain" />
         </div>
       </div>
   

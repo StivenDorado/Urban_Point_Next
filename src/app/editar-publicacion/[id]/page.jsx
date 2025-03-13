@@ -19,25 +19,32 @@ export default function EditarPropiedad() {
   const [previewImage, setPreviewImage] = useState(null);
   const [error, setError] = useState(null);
 
+  // Cargar la propiedad a editar
   useEffect(() => {
-    console.log(propiedadId);
     if (!propiedadId) return;
-    fetch(`http://localhost:4004/api/publicacion/${propiedadId}`)
-      .then((res) => res.json())
-      .then((data) => {
+    
+    const cargarPropiedad = async () => {
+      try {
+        const res = await fetch(`http://localhost:4000/api/publicacion/${propiedadId}`);
+        if (!res.ok) {
+          throw new Error("Error al cargar la propiedad");
+        }
+        const data = await res.json();
         setFormData({
           titulo: data.titulo,
           descripcion: data.descripcion,
           direccion: data.direccion,
           precio: data.precio,
-          imagen: null,
+          imagen: null, // No se establece el archivo, se mantiene la imagen actual en preview
         });
-        setPreviewImage(`http://localhost:4004/uploads/${data.imagen}`);
-      })
-      .catch((err) => {
+        setPreviewImage(`http://localhost:4000/uploads/${data.imagen}`);
+      } catch (err) {
         console.error("Error al cargar la propiedad:", err);
         setError("Error al cargar la propiedad");
-      });
+      }
+    };
+
+    cargarPropiedad();
   }, [propiedadId]);
 
   const handleChange = (e) => {
@@ -57,9 +64,14 @@ export default function EditarPropiedad() {
     e.preventDefault();
     setError(null);
 
-    const token = await auth.currentUser?.getIdToken();
-    if (!token) {
+    const currentUser = auth.currentUser;
+    if (!currentUser) {
       setError("Usuario no autenticado. Inicia sesión.");
+      return;
+    }
+    const token = await currentUser.getIdToken();
+    if (!token) {
+      setError("No se pudo obtener el token de autenticación.");
       return;
     }
 
@@ -69,11 +81,15 @@ export default function EditarPropiedad() {
       data.append("descripcion", formData.descripcion);
       data.append("direccion", formData.direccion);
       data.append("precio", formData.precio);
-      if (formData.imagen) data.append("imagen", formData.imagen);
+      if (formData.imagen) {
+        data.append("imagen", formData.imagen);
+      }
 
-      const res = await fetch(`http://localhost:4004/api/publicacion/${propiedadId}`, {
+      const res = await fetch(`http://localhost:4000/api/publicacion/${propiedadId}`, {
         method: "PUT",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: data,
       });
 
@@ -85,6 +101,7 @@ export default function EditarPropiedad() {
         router.push("/propiedadesPublicadas");
       }
     } catch (err) {
+      console.error("Error en la petición:", err);
       setError("Error en la petición");
     }
   };
@@ -165,12 +182,14 @@ export default function EditarPropiedad() {
           </form>
         </div>
         <div className="flex-1 flex items-center justify-center">
-          {previewImage && (
+          {previewImage ? (
             <img
               src={previewImage}
               alt="Vista previa"
               className="w-full h-full object-cover rounded-lg"
             />
+          ) : (
+            <p className="text-white">No hay imagen seleccionada</p>
           )}
         </div>
       </div>
