@@ -26,7 +26,7 @@ export default function RegistroArrendatario() {
       const token = await auth.currentUser.getIdToken();
 
       // Realizar la petición para registrar al arrendador
-      const res = await fetch("http://localhost:4004/api/arrendador", {
+      const res = await fetch("http://localhost:4000/api/arrendador", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

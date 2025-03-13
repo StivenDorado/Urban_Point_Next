@@ -14,10 +14,10 @@ export default function Login() {
   const [isNewUser, setIsNewUser] = useState(false);
   const [error, setError] = useState(null);
 
-  // Función para verificar si el usuario está registrado como propietario
-  const verificarPropietario = async (token, userUid) => {
+  // Función para verificar si el usuario está registrado como arrendador
+  const verificararrendador = async (token, userUid) => {
     try {
-      const res = await fetch("http://localhost:4004/api/arrendador", {
+      const res = await fetch("http://localhost:4000/api/arrendador", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -26,20 +26,20 @@ export default function Login() {
       });
   
       const data = await res.json();
-      console.log("Respuesta del endpoint de propietario:", data);
+      console.log("Respuesta del endpoint de arrendador:", data);
   
-      // Si la respuesta es un array, buscamos el propietario con el mismo UID
+      // Si la respuesta es un array, buscamos el arrendador con el mismo UID
       if (Array.isArray(data)) {
-        const propietario = data.find((p) => p.uid.trim() === userUid.trim());
-        if (propietario) {
-          localStorage.setItem("propietarioId", propietario.uid);
+        const arrendador = data.find((p) => p.uid.trim() === userUid.trim());
+        if (arrendador) {
+          localStorage.setItem("arrendadorId", arrendador.uid);
           return true;
         }
       }
   
       return false;
     } catch (error) {
-      console.error("Error verificando propietario:", error);
+      console.error("Error verificando arrendador:", error);
       return false;
     }
   };
@@ -68,11 +68,11 @@ export default function Login() {
       const token = await user.getIdToken();
       console.log("Token obtenido:", token);
   
-      // Verificamos si el usuario está registrado como propietario usando su UID
-      const esPropietario = await verificarPropietario(token, user.uid);
-      console.log("¿Es propietario?", esPropietario);
+      // Verificamos si el usuario está registrado como arrendador usando su UID
+      const esarrendador = await verificararrendador(token, user.uid);
+      console.log("¿Es arrendador?", esarrendador);
   
-      if (esPropietario) {
+      if (esarrendador) {
         router.push("/arrendatario");
       } else {
         router.push("/home");
@@ -97,10 +97,10 @@ export default function Login() {
       const token = await user.getIdToken();
       console.log("Token obtenido:", token);
   
-      const esPropietario = await verificarPropietario(token, user.uid);
-      console.log("¿Es propietario?", esPropietario);
+      const esarrendador = await verificararrendador(token, user.uid);
+      console.log("¿Es arrendador?", esarrendador);
   
-      if (esPropietario) {
+      if (esarrendador) {
         router.push("/home2");
       } else {
         router.push("/home");
