@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, db } from "../../../firebase"; // db se usará si deseas integrar Firestore en el futuro
 import { useFavorites } from "../../context/FavoritesContext";
-import EditableProfileImage from "../../components/profile/EditImage";
-import EditableName from "../../components/profile/EditName";
-import Menu from "../../components/profile/Menu";
+import EditableProfileImage from "../components/profile/EditImage";
+import EditableName from "../components/profile/EditName";
+import Menu from "../components/profile/Menu";
 import "../../../src/globals.css";
 
 export default function Profile() {

@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase";
 import { useFavorites } from "../../context/FavoritesContext";
-import EditableProfileImage from "../../components/profile/EditImage";
-import EditableName from "../../components/profile/EditName";
-import Menu from "../../components/profile/Menu2";
+import EditableProfileImage from "../components/profile/EditImage";
+import EditableName from "../components/profile/EditName";
+import Menu from "../components/profile/Menu2";
 import "../../../src/globals.css";
 
 export default function Profile() {

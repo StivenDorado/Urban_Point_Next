@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Footer from "../../components/general/footer/Footer";
-import FiltersMenu from "../../components/general/filters/Menu";
-import Header from "../../components/general/header/Headerlg";
-import Header2 from "../../components/header/header";
+import Footer from "../components/general/footer/Footer";
+import FiltersMenu from "../components/general/filters/Menu";
+import Header from "../components/general/header/Headerlg";
+
 
 
 export default function Landing() {
@@ -16,7 +16,7 @@ export default function Landing() {
 
   return (
     <div className="bg-gray-800 min-h-screen">
-      <Header2 />
+      
 
       {/* Barra de búsqueda */}
       {/* {<header className="relative bg-white shadow">

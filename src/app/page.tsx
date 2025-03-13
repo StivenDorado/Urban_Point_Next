@@ -1,13 +1,13 @@
 "use client"; 
 
 import { useAuth } from "../context/AuthContext";
-import Login from "../app/login";
+import Landing from "../app/landing/page";
 
 export default function Home() {
   const {user, logOut } = useAuth();
 
   if (!user) {
-    return <Login/>
+    return <Landing/>
   }
   
   return (

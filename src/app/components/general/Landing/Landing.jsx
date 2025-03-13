@@ -1,42 +1,20 @@
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
-import Footer from "../components/general/footer/Footer";
-import FiltersMenu from "../components/general/filters/Menu";
-import Header from "../components/general/header/Headerlg";
-/* import Header2 from "../components/header2/header2"; */
-
+import Footer from "../../components/footer/Footer";
+import Link from "next/link"; // Elimina react-router-dom
 
 export default function Landing() {
-  const [isFiltersOpen, setFiltersOpen] = useState(false);
-
-  // Función para alternar el estado del menú de filtros
-  const toggleFiltersMenu = () => setFiltersOpen(!isFiltersOpen);
-
   return (
-    <div className="bg-gray-800 min-h-screen">
-      {/* <Header2 /> */}
-
-      {/* Barra de búsqueda */}
-      {/* {<header className="relative bg-white shadow">
-        <SearchBar onFiltersClick={toggleFiltersMenu} />
-      </header>} */}
-      <Header />
-      
-
-      {/* Sección de resultados */}
+    <div className="bg-white"> {/* Fondo blanco para toda la página */}
       <section className="p-4 grid grid-cols-3 gap-4">
         <div className="bg-gray-300 h-24 rounded-md" />
         <div className="bg-gray-300 h-24 rounded-md" />
         <div className="bg-gray-300 h-24 rounded-md" />
       </section>
 
-      <section className="grid grid-cols-4 gap-20 p-24">
+      <section className="grid grid-cols-4 gap-20 p-24 bg-white"> {/* Cambiado a bg-white */}
         {Array.from({ length: 16 }).map((_, index) => (
-          <Link href="/reserva" key={index}>
+          <Link href="/reserva" key={index}> {/* Corregido `to` por `href` */}
             <div className="flex flex-col items-center justify-center">
-              <div className="bg-zinc-700 relative w-60 h-56 rounded-t-lg">
+              <div className="bg-white relative w-60 h-56 rounded-t-lg">
                 <button className="bg-transparent absolute top-1 right-2 rounded-lg px-1 py-1">
                   <svg
                     className="h-5 w-5"
@@ -53,7 +31,21 @@ export default function Landing() {
               </div>
 
               <div className="text-black flex flex-col items-center bg-gray-300 w-60 h-28 rounded-b-lg">
-                <h3 className="text-lg font-semibold">San Eduardo</h3>
+                <div className="flex items-center justify-center space-x-1 px-4 py-1">
+                  <h3 className="text-lg font-semibold">San Eduardo</h3>
+                  <span>0.0</span>
+                  <svg
+                    className="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
                 <p className="text-xs text-gray-500 text-center">
                   Disponible desde 11-20 sep
                 </p>
@@ -65,11 +57,6 @@ export default function Landing() {
           </Link>
         ))}
       </section>
-
-      {/* Menú de filtros */}
-      <FiltersMenu isOpen={isFiltersOpen} onClose={toggleFiltersMenu} />
-
-      {/* Footer */}
       <Footer />
     </div>
   );
