@@ -2,19 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 body {
   margin: 0;
   padding: 0;
-  background-image: url('../public/background.jpeg'); /* Ruta a la imagen en la carpeta public */
-  background-size: cover; /* Ajusta la imagen para cubrir todo el fondo */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  background-attachment: fixed; /* Fija la imagen para que no se desplace con el contenido */
-  min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana */
-  
+  background: linear-gradient(0deg, rgb(255, 255, 2rgba(76, 255, 6, 0.185) 0.9)); /* Degradado verde a negro */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 .background-blur {
@@ -28,7 +24,7 @@ body {
 }
 
 .custom-backdrop-blur {
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(5px);
 }
 
 .no-blur {

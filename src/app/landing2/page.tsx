@@ -5,7 +5,7 @@ import Link from "next/link";
 import Footer from "../components/general/footer/Footer";
 import SearchBar from "../components/general/barSearch/searchBar";
 import FiltersMenu from "../components/general/filters/Menu";
-import Header from "../components/general/header/Headerlg";
+import Header from "../components/general/header2/Headerlg";
 import { Home, Building, BedDouble, BookOpen } from "lucide-react";
 
 export default function Landing() {
