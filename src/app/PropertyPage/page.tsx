@@ -1,6 +1,7 @@
 "use client"; // Asegúrate de que este archivo sea un Client Component
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Star, Clock } from "lucide-react";
 import PriceOfferModal from "../components/Apprentice/ofrecer/Modal"; // Ajusta la ruta según tu estructura
@@ -8,19 +9,51 @@ import Header from "../components/general/header/Headerlg";
 
 export default function PropertyPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
+
+  // Función para enviar la reserva mediante fetch y mostrar alertas
+  const handleReserva = async () => {
+    // Ejemplo de datos para la reserva, ajusta según lo que necesites
+    const reservaData = {
+      usuario_id: 1,
+      propiedad_id: 123,
+      fecha_inicio: "2025-04-01",
+      fecha_fin: "2025-04-10",
+      monto_reserva: 260000,
+      anticipo: 0,
+      observaciones: "Reserva realizada desde el botón RESERVAR"
+    };
+
+    try {
+      const response = await fetch("/api/reservas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(reservaData)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert("Reserva creada exitosamente");
+        // Redirige a la página de notificaciones del arrendatario
+        router.push("/arrendatario/notifications");
+      } else {
+        const errorData = await response.json();
+        alert("Error al crear la reserva: " + errorData.mensaje);
+      }
+    }catch (error) {
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      alert("Error en la conexión con la API: " + errorMsg);
+    }
+    
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
       <Header />
-      {/* <header className="bg-gray-200 p-4">
-        <div className="container mx-auto">
-          <div className="shadow-md bg-white rounded-full py-2 px-4 inline-block">
-            <span className="font-semibold">Logo UrbanPoint</span>
-          </div>
-        </div>
-      </header> */}
-
+      
       {/* Main Content */}
       <main className="flex-grow container mx-auto py-8 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -48,8 +81,15 @@ export default function PropertyPage() {
 
             {/* Reservation Buttons */}
             <div className="flex flex-col gap-2">
-              <button className="bg-gray-900 text-white py-3 rounded font-medium">RESERVAR</button>
-              <button className="bg-gray-400 text-white py-3 rounded font-medium">AGENDA UNA CITA</button>
+              <button 
+                onClick={handleReserva}
+                className="bg-gray-900 text-white py-3 rounded font-medium"
+              >
+                RESERVAR
+              </button>
+              <button className="bg-gray-400 text-white py-3 rounded font-medium">
+                AGENDA UNA CITA
+              </button>
             </div>
           </div>
 

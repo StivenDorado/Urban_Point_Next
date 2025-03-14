@@ -76,7 +76,7 @@ function LoggedInView() {
           <Heart size={18} />
         </button>
       </Link>
-      <Link href="/alojamiento">
+      <Link href="/publicarPropiedad">
         <button className="px-4 py-3 text-left hover:bg-gray-100 transition-colors w-full">
           Publicar Alojamiento
         </button>

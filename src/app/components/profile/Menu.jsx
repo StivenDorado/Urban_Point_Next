@@ -17,7 +17,7 @@ export default function Menu() {
     { label: "Publicaciones guardadas", href: "/favorites", icon: <Bookmark className="w-5 h-5" /> },
     { label: "Enviar reportes", href: "/reports", icon: <Flag className="w-5 h-5" /> },
     { label: "Notificaciones", href: "/notifications", icon: <Bell className="w-5 h-5" /> },
-    { label: "Inicio", href: "/home", icon: <Home className="w-5 h-5" /> },
+    { label: "Inicio", href: "/landing2", icon: <Home className="w-5 h-5" /> },
     { label: "Cerrar sesión", href: "/", icon: <LogOut className="w-5 h-5" /> },
   ];
 
